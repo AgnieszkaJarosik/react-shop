@@ -1,0 +1,11 @@
+.HeaderBig {
+    font-size: 30px;
+    text-transform: uppercase;
+    padding: 15px 0;
+}
+
+.HeaderSmall {
+    font-size: 22px;
+    text-transform: uppercase;
+    padding: 5px 0;
+}

@@ -1,0 +1,141 @@
+.Root {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.Container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.Modal {
+  background: white;
+  width: 50%;
+  z-index: 99;
+  position: absolute;
+  borderRadius: 10px;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
+  padding: 1rem 4rem 5rem 1rem;
+}
+
+.Headers {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.Headers h4 {
+  margin: 0.1rem 0;
+}
+
+.Product {
+  display: flex;
+  justify-content: center;
+}
+
+.Product h5 {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.ImgNameContainer {
+  flex-basis: 25%;
+  display: flex;
+}
+
+.Image {
+  display: block;
+  width: 40%;
+  height: auto;
+}
+
+.DetailsContainer {
+  flex-basis: 75%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.QuantityButton {
+  background-color: #eeeeee;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(0,0,0,0.3);
+  border-radius: 100%;
+  font-weight: 700;
+  margin: 0 0.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all ease 0.3s;
+}
+
+.QuantityButton:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.CloseButton {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 30px;
+  height: 30px;
+  font-weight: 900;
+  font-size: 1rem;
+  border-radius: 100%;
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+  border: solid 2px rgba(255, 255, 255, 0.7);
+}
+
+.CloseButton:hover {
+  cursor: pointer;
+}
+
+.TotalCost {
+  font-size: 1.3rem;
+  font-weight: 600;
+  position: absolute;
+  right: 6.5rem;
+  bottom: 1.4rem;
+  text-align: center;
+}
+
+.TotalSum {
+  font-size: 1.6rem;
+  font-weight: 700;
+  width: 30%;
+  color: rgba(0, 161, 180, 0.9);
+  margin-left: 2.5rem;
+  padding: 1rem 1rem;
+}
+
+.Reset {
+  position: absolute;
+  bottom: 0;
+  right: 0.5rem;
+  font-size: 2rem;
+  padding: 1rem 1rem;
+  color: rgba(0, 0, 0, 0.8);
+  transition: all ease 0.5s;
+}
+
+.Reset:hover {
+  cursor: pointer;
+  color: rgba(255, 0, 0, 0.8);
+}
