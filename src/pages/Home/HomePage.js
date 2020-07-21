@@ -1,13 +1,12 @@
-import React, {useState, useEffect} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, {useEffect} from "react";
 
-import { fetchData } from "../../actions/products";
+import {useSelector} from "react-redux";
 
 import HeaderBig from "components/Header/HeaderBig";
 import HeaderSmall from "components/Header/HeaderSmall";
-
-import ProductService from "services/ProductService";
 import ProductsList from "components/ProductsList/ProductsList";
+
+import useFilter from "../../hooks/useFilter";
 
 const ProductsSection = ({ title, products }) => (
   <>
@@ -17,27 +16,28 @@ const ProductsSection = ({ title, products }) => (
 );
 
 const HomePage = () => {
-  const products = useSelector(store => store.products.products );
-  const dispatch = useDispatch();
-  const [featuredDesktop, setFeaturedDesktop] = useState([]);
-  const [featuredTablet, setFeaturedTablet] = useState([]);
+  const isLoading = useSelector(state => state.products.isLoading);
+  const isError = useSelector(state => state.products.isError);
+  const [featuredDesktop, setFeaturedDesktop] = useFilter();
+  const [featuredTablet, setFeaturedTablet] = useFilter();
 
   useEffect(() => {
-    if(products.length === 0) {
-      dispatch(fetchData());
-    }
-  },[]);
-
-  useEffect(() => {
-    setFeaturedDesktop(ProductService.getProductsByFilter(products, {
+    setFeaturedDesktop({
       category: "desktop",
       featured: true
-    }));
-    setFeaturedTablet(ProductService.getProductsByFilter(products, {
+    });
+    setFeaturedTablet({
       category: "tablet",
       featured: true
-    }));
-  }, [products]);
+    })
+  },[isLoading]);
+
+  if(isLoading) {
+    return <div>Loading...</div>
+  }
+  if(isError) {
+    return <div>Error...</div>
+  }
 
   return (
     <>

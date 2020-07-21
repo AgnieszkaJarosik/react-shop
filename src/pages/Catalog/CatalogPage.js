@@ -1,45 +1,44 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+
+import {useSelector} from "react-redux";
 
 import HeaderBig from "components/Header/HeaderBig";
 import ProductsList from "components/ProductsList/ProductsList";
-
-import ProductService from "services/ProductService";
-import { fetchData } from "actions/products";
-
-import styles from "./CatalogPage.module.css";
 import Filters from "./components/Filters/Filters";
 
+import useFilter from "hooks/useFilter";
+
+import styles from "./CatalogPage.module.css";
+
 const CatalogPage = () => {
-  const products = useSelector(store => store.products.products);
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const dispatch = useDispatch();
+  const isLoading = useSelector(state => state.products.isLoading);
+  const isError = useSelector(state => state.products.isError);
+  const [products, setProducts, getManufactures ] = useFilter();
   const [filter, setFilter] = useState({
     text: "",
     manufacture: "All"
   });
 
   useEffect(() => {
-      if (products.length === 0) {
-        dispatch(fetchData());
-      }
-    setFilteredProducts(ProductService.getProductsByFilter(products, {}))
-  }, [products])
-
-  useEffect(() => {
-    const filteredProducts = ProductService.getProductsByFilter(products, {
+    setProducts({
       name: filter.text,
       manufacture: filter.manufacture === "All" ? null : filter.manufacture
     });
+  }, [filter, isLoading]);
 
-    setFilteredProducts(filteredProducts);
-  }, [filter]);
-
-  const manufacturers = ["All", ...ProductService.getManufactures(products)];
+  const manufacturers = ["All", ...getManufactures()];
 
   const handleFilterChange = filters => {
     setFilter(filters);
   };
+
+  if(isLoading) {
+    return <div>Loading...</div>
+  }
+
+  if(isError) {
+    return <div>Error...</div>
+  }
 
   return (
     <>
@@ -55,7 +54,7 @@ const CatalogPage = () => {
         </div>
 
         <div className={styles.ColumnRight}>
-          <ProductsList products={filteredProducts} />
+          <ProductsList products={products} />
         </div>
       </div>
     </>
