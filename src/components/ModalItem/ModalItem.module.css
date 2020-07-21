@@ -1,0 +1,48 @@
+.Product {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.Product h5 {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.ImgNameContainer {
+  flex-basis: 25%;
+  display: flex;
+}
+
+.Image {
+  display: block;
+  width: 40%;
+  height: auto;
+}
+
+.DetailsContainer {
+  flex-basis: 75%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.DeleteContainer {
+  position: absolute;
+  right: -1rem;
+  top: 25%;
+  font-size: 1.7rem;
+  color: rgba(0, 0, 0, 0.8);
+  transition: all ease 0.5s;
+}
+
+.DeleteContainer:hover {
+  cursor: pointer;
+  color: rgba(255, 0, 0, 0.8);
+}

@@ -10,6 +10,7 @@ const useFilter = () => {
   useEffect(()=> {
     if(products.length === 0) {
       dispatch(fetchData());
+      console.log('fetching')
     }
   },[]);
 

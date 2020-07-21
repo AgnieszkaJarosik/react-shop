@@ -1,5 +1,5 @@
 .Root {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   width: 100%;
@@ -8,7 +8,7 @@
 .Container {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.6);
 }
 
@@ -16,12 +16,22 @@
   background: white;
   width: 50%;
   z-index: 99;
-  position: absolute;
-  borderRadius: 10px;
+  position: relative;
+  border-radius: 5px;
   left: 50%;
-  top: 30%;
+  top: 20%;
   transform: translateX(-50%);
-  padding: 1rem 4rem 5rem 1rem;
+  padding: 4rem 4rem 2rem 2rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 35%;
+  max-height: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 .Headers {
@@ -36,81 +46,32 @@
   margin: 0.1rem 0;
 }
 
-.Product {
-  display: flex;
-  justify-content: center;
+.ModalItemContainer {
+  /*display: flex;*/
+  position: relative;
 }
 
-.Product h5 {
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-
-.ImgNameContainer {
-  flex-basis: 25%;
-  display: flex;
-}
-
-.Image {
-  display: block;
-  width: 40%;
-  height: auto;
-}
-
-.DetailsContainer {
-  flex-basis: 75%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.Quantity {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.QuantityButton {
-  background-color: #eeeeee;
-  width: 20px;
-  height: 20px;
-  border: 1px solid rgba(0,0,0,0.3);
-  border-radius: 100%;
-  font-weight: 700;
-  margin: 0 0.6rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all ease 0.3s;
-}
-
-.QuantityButton:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-}
-
-.CloseButton {
+.Close {
   position: absolute;
-  top: -15px;
-  right: -15px;
-  width: 30px;
-  height: 30px;
+  top: 0;
+  right: 1rem;
   font-weight: 900;
   font-size: 1rem;
-  border-radius: 100%;
-  background-color: rgba(0,0,0,0.8);
-  color: white;
-  border: solid 2px rgba(255, 255, 255, 0.7);
+  color: black;
 }
 
-.CloseButton:hover {
+.Close:hover {
   cursor: pointer;
+}
+
+.SumContainer {
+  align-self: flex-end;
+  display: flex;
 }
 
 .TotalCost {
   font-size: 1.3rem;
   font-weight: 600;
-  position: absolute;
   right: 6.5rem;
   bottom: 1.4rem;
   text-align: center;
@@ -121,16 +82,13 @@
   font-weight: 700;
   width: 30%;
   color: rgba(0, 161, 180, 0.9);
-  margin-left: 2.5rem;
-  padding: 1rem 1rem;
+  padding: 1rem;
 }
 
 .Reset {
-  position: absolute;
-  bottom: 0;
-  right: 0.5rem;
+  position: relative;
+  bottom: 5px;
   font-size: 2rem;
-  padding: 1rem 1rem;
   color: rgba(0, 0, 0, 0.8);
   transition: all ease 0.5s;
 }
@@ -138,4 +96,13 @@
 .Reset:hover {
   cursor: pointer;
   color: rgba(255, 0, 0, 0.8);
+}
+
+.Empty {
+  font-size: 3rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
 }

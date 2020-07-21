@@ -1,15 +1,15 @@
-.Background {
+.Cart {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
   position: relative;
+  right: 5%;
 }
 
-.Background:hover {
+.Cart:hover {
   cursor: pointer;
 }
-
 
 .Quantity {
   background-color: #eeeeee;
